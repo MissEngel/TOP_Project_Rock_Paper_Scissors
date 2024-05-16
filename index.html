@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="game.js"></script>
+    <script src="game.js" defer></script>
 </head>
 <body>
+    <h1>Rock, Paper, Scissors Game!</h1>
+    <h2>Pick your poison:</h2>
+    <ul id="choices">
+        <li><button id="rock">Rock</button></li>
+        <li><button id="paper">Paper</button></li>
+        <li><button id="scissors">Scissors</button></li>
+    </ul>
+    <div>
+        <ul>
+            <li id="currentGame"></li>
+            <li id="displayedMsg"></li>
+            <li id="userWins"></li>
+            <li id="machineWins"></li>
+            <li id="ties"></li>
+        </ul>
+    </div>
 </body>
 </html>

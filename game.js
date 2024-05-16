@@ -10,25 +10,16 @@ function userInputGuess(){
 //create function that returns machine guess
 function machineInputGuess(){
     machineGuess = Math.floor(Math.random() * 3) + 1;
-    console.log(machineGuess)
     if(machineGuess === 1){
-        machineGuess = "rock";
+        return "rock";
     }
     else if(machineGuess === 2){
-        machineGuess = "paper";
+        return "paper";
     }
     else{
-        machineGuess = "scissors"
+        return "scissors"
     }
 }
-
-//create variable for user guess
-let userGuess;
-
-//create variable for machine guess
-let machineGuess;
-
-playGame();
 
 function playGame(){
     //create variable to keep playing with a boolean value of true
@@ -45,6 +36,8 @@ function playGame(){
 
     //create variable for ties counter
     let ties = 0;
+
+    currentGamePara = document.createElement('p')
 
     function playRound(){
         while(keepPlaying){
@@ -67,7 +60,10 @@ function playGame(){
                 console.log("The machine wins :(");
                 machineWins += 1;
             }
-        
+            
+            currentGameli.textContent = `User wins: ${userWins}`
+
+            
             console.log("User wins: " + userWins);
             console.log("Machine wins: " + machineWins);
             console.log("Number of ties: " + ties);
@@ -79,3 +75,66 @@ function playGame(){
     }
 }
 
+const choicesList = document.querySelector("#choices");
+
+choicesList.addEventListener("click", (event) => {
+
+    let choice = event.target;
+    let machineGuess = machineInputGuess();
+    const displayedMsg = document.querySelector('#displayedMsg');
+    let currentGame = 0;
+    let userWins = 0;
+    let machineWins = 0;
+    let ties = 0;
+    const currentGameLi = document.querySelector('#currentGame'); 
+    const userWinsLi = document.querySelector('#userWins');
+    const machineWinsLi = document.querySelector('#machineWins');
+    const tiesLi = document.querySelector('#ties');
+
+    switch(choice.id){
+        case machineGuess:
+            displayedMsg.textContent = "It's a tie!";
+            ties +=1;
+            break;
+
+        case 'rock':
+            if((machineGuess === "scissors")){
+                displayedMsg.textContent = "You win!";
+                userWins += 1;
+            }
+            else{
+                displayedMsg.textContent = "The machine wins :(";
+                machineWins += 1;
+            }
+            break;
+        
+        case 'paper':
+            if((machineGuess === "rock")){
+                displayedMsg.textContent = "You win!";
+                userWins += 1;
+            }
+            else{
+                displayedMsg.textContent = "The machine wins :(";
+                machineWins += 1;
+            }
+            break;
+            
+        case 'scissors':
+            if((machineGuess === "paper")){
+                displayedMsg.textContent = "You win!"
+                userWins += 1;
+            }
+            else{
+                displayedMsg.textContent = "The machine wins :("
+                machineWins += 1;
+            }
+            break;
+    }
+    currentGame += 1
+
+    currentGameLi.textContent = `Game number ${currentGame}`;
+    userWinsLi.textContent = `User's wins: ${userWins}`;
+    machineWinsLi.textContent = `Machine's wins: ${machineWins}`;
+    tiesLi.textContent = `Number of ties: ${ties}`;
+
+})
