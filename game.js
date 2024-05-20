@@ -78,7 +78,7 @@ const playing = function(event){
         const displayedMsgLi = document.querySelector('#displayedMessages')
 
         if( userWins === 5){
-            winnerMsg.textContent = "You are the winner!";
+            winnerMsg.textContent = "You are the winner! 🎉";
             displayedMsgLi.appendChild(winnerMsg);
         }
         else{
