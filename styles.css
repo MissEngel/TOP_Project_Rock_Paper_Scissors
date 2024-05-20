@@ -48,3 +48,8 @@ button{
 #displayedMessages > li{
     margin: 0.3rem 0;
 }
+
+p{
+    font-size: large;
+    font-weight: bold;
+}
